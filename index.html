@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Welcome to Food Factory</title>
+	<meta charset="utf-8">
+	<meta name="author" content="pixelhint.com">
+	<meta name="description" content="Sublime Stunning free HTML5/CSS3 website template"/>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/fancybox.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+	<section class="billboard light">
+		<!-- Include Header -->
+		<div include-html="header.html"></div>
+
+		<div class="caption light animated wow fadeInDown clearfix">
+			<h1>Welcome to Food Factory</h1>
+			<p>Flavors You’ll Fall For — A Perfect Spot for Food Lovers</p>
+			<hr>
+		</div>
+		<div class="shadow"></div>
+	</section><!-- End billboard -->
+
+	<section class="services wrapper">
+		<ul class="clearfix">
+			<li class="animated wow fadeInDown">
+				<img class="icon" src="img/service.jpg" alt=""/>
+				<span class="separator"></span>
+				<h2>Known for service</h2>
+				<p>We are committed to provide you with an exceptional dining experience every time you walk through our door.</p>
+			</li>
+			<li class="animated wow fadeInDown"  data-wow-delay=".2s">
+				<img class="icon" src="img/food.jpg" alt=""/>
+				<span class="separator"></span>
+				<h2>All Indian Foods</h2>
+				<p>We offer authentic Indian cuisine from various regions across India, showcasing the rich and diverse flavors of the Indian subcontinent.</p>
+			</li>
+			<li class="animated wow fadeInDown"  data-wow-delay=".4s">
+				<img class="icon" src="img/taste.jpg" alt=""/>
+				<span class="separator"></span>
+				<h2>A harmonious taste</h2>
+				<p>Our chefs understand that the secret of good taste lies largely in the freshness of the ingredients and creating a harmonious combination of tastes.</p>
+			</li>
+		</ul>
+	</section><!-- End services -->
+
+	<section class="video">
+		<img class="logo" src="img/logo.png" alt="Restaurant welcomes you" class="video_logo animated wow fadeInDown"/>
+		<h3 class="animated wow fadeInDown">The icing on the cake is our prompt, efficient and personalized service.</h3>
+		<a href="#" id="play_btn" class="fancybox animated wow flipInX" data-wow-duration="2s"></a>
+	</section><!-- End video -->
+
+	<section class="testimonials wrapper">
+		<div class="title animated wow fadeIn">
+			<h2>We have Karaoke too!</h2>
+			<h3>Apart from the mouth-watering food, we offer private dining rooms with Karaoke facilities in every room and a wide variety of song selections. (Rooms can adequately accommodate 10 to 45 people)</h3>
+			<hr class="separator"/>
+		</div>
+	</section><!-- End testimonials -->
+
+	<!-- Include Footer -->
+	<div include-html="footer.html"></div>
+
+	<!-- JavaScript Files -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/fancybox.js"></script>
+	<script type="text/javascript" src="js/wow.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+	<!-- Include HTML script -->
+	<script>
+	function includeHTML() {
+		const elements = document.querySelectorAll('[include-html]');
+		elements.forEach(el => {
+			const file = el.getAttribute('include-html');
+			fetch(file)
+				.then(response => {
+					if (!response.ok) throw new Error('Page not found');
+					return response.text();
+				})
+				.then(data => el.innerHTML = data)
+				.catch(err => el.innerHTML = 'Content not found');
+		});
+	}
+	includeHTML();
+	</script>
+</body>
+</html>

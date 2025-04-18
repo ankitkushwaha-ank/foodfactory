@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Menu</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1050, user-scalable=no">
+
+	<link rel="stylesheet" type="text/css" href="css/menu.css">
+</head>
+<body>
+
+	<!-- Billboard with Header -->
+	<section class="billboard light">
+		<!-- Include header.html -->
+		<div include-html="header.html"></div>
+
+		<div class="caption light animated wow fadeInDown clearfix">
+			<h1>We love wonderful tastes and food.</h1>
+			<p>Check out our selection of wonderful Indian cuisine</p>
+			<hr>
+		</div>
+		<div class="shadow"></div>
+	</section><!-- End billboard -->
+
+	<!-- Magazine View (Flipbook style menu) -->
+	<div id="canvas">
+		<div class="zoom-icon zoom-icon-in"></div>
+
+		<div class="magazine-viewport">
+			<div class="container">
+				<div class="magazine">
+					<!-- Next button -->
+					<div ignore="1" class="next-button"></div>
+					<!-- Previous button -->
+					<div ignore="1" class="previous-button"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Include Footer -->
+	<div include-html="footer.html"></div>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="js/jquery.min.1.7.js"></script>
+	<script type="text/javascript" src="js/modernizr.2.5.3.min.js"></script>
+	<script type="text/javascript" src="js/hash.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+
+	<script>
+		// Include header and footer dynamically
+		function includeHTML() {
+			const elements = document.querySelectorAll('[include-html]');
+			elements.forEach(el => {
+				const file = el.getAttribute('include-html');
+				fetch(file)
+					.then(res => {
+						if (!res.ok) throw new Error('Page not found');
+						return res.text();
+					})
+					.then(data => el.innerHTML = data)
+					.catch(() => el.innerHTML = "Content not found.");
+			});
+		}
+		includeHTML();
+	</script>
+</body>
+</html>
